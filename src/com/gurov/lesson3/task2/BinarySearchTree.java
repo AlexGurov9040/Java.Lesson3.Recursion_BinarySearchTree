@@ -18,6 +18,8 @@ public class BinarySearchTree {
         tree.Insert(21,"Node_5");
         tree.Insert(36,"Node_6");
         tree.Insert(19,"Node_7");
+        tree.Insert(33,"Node_8");
+        tree.Insert(38,"Node_9");
         tree.Display();
         CreateNode findValue = tree.Find(21);
         if (findValue != null)

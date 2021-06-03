@@ -20,31 +20,35 @@ public class CreateTree {
             return rootNode;
         }
         else{ //if this not root
-                CreateNode node = newNode;
-            if (key < newNode.getKey()){ //go to left
-                newNode = newNode.getLeftChild();
-                if (newNode == null) { //write new node
-                    node.setLeftChild(new CreateNode(key,value));
-                    newNode = rootNode;
-                    return rootNode;
-                }
-                else //search node next
-                    return Insert(key, value);
-            }
-            else if (key > newNode.getKey()){ //go to right
-                newNode = newNode.getRightChild();
-                if (newNode == null) { //write new node
-                    node.setRightChild(new CreateNode(key,value));
-                    newNode = rootNode;
-                    return rootNode;
-                }
-                else //search node next
-                    return Insert(key, value);
-            }
-            else { //if keys are equal then rewrite
-                node.setValue(value);
+            CreateNode node = RecursionForInsert(rootNode,key,value);
+            return node;
+        }
+    }
+
+    private CreateNode RecursionForInsert(CreateNode node,int key,String value){
+
+        newNode = node;
+        if (key < newNode.getKey()){ //go to left
+            newNode = newNode.getLeftChild();
+            if (newNode == null) { //write new node
+                node.setLeftChild(new CreateNode(key,value));
                 return rootNode;
             }
+            else //search node next
+                return RecursionForInsert(newNode,key, value);
+        }
+        else if (key > newNode.getKey()){ //go to right
+            newNode = newNode.getRightChild();
+            if (newNode == null) { //write new node
+                node.setRightChild(new CreateNode(key,value));
+                return rootNode;
+            }
+            else //search node next
+                return RecursionForInsert(newNode,key, value);
+        }
+        else { //if keys are equal then rewrite
+            node.setValue(value);
+            return rootNode;
         }
     }
 
