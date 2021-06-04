@@ -31,6 +31,8 @@ public class BinarySearchTree {
             System.out.printf("Node found: %d:%s\n",findValue.getKey(),findValue.getValue());
         else
             System.out.println("Node not found");
+        tree.Remove(21);
+        tree.Display();
     }
 
 }

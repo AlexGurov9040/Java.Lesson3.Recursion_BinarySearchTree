@@ -54,6 +54,58 @@ public class CreateTree {
 
     public void Remove(int key){
 
+        if (rootNode == null)
+            return;
+        else{
+            CreateNode node = rootNode;
+            if (key == rootNode.getKey()){
+                rootNode = rootNode.getRightChild();
+                if (rootNode != null){
+                    newNode = rootNode;
+                    while (newNode.getLeftChild() != null)
+                        newNode = newNode.getLeftChild();
+                    newNode.setLeftChild(node.getLeftChild());
+                }
+                else
+                    rootNode = node.getLeftChild();
+                return;
+            }
+            do {
+                if (node.getLeftChild() != null)
+                    if (key == node.getLeftChild().getKey()) {
+                        newNode = BruteNode(node.getLeftChild());
+                        node.setLeftChild(newNode);
+                        return;
+                    }
+                if (node.getRightChild() != null)
+                    if (key == node.getRightChild().getKey()){
+                        newNode = BruteNode(node.getRightChild());
+                        node.setRightChild(newNode);
+                        return;
+                    }
+                if (key < node.getKey())
+                    node = node.getLeftChild();
+                else
+                    node = node.getRightChild();
+            }
+            while(node != null);
+        }
+    }
+
+    private CreateNode BruteNode(CreateNode returnNode){
+
+        CreateNode nodeLeft;
+        CreateNode nodeRight;
+        nodeLeft = returnNode.getLeftChild();
+        nodeRight = returnNode.getRightChild();
+        if (nodeRight != null) {
+            while (nodeRight.getLeftChild() != null)
+                nodeRight = nodeRight.getLeftChild();
+            nodeRight.setLeftChild(nodeLeft);
+        }
+        else
+            nodeRight = nodeLeft;
+        return nodeRight;
     }
 
     public CreateNode Find(int key){
