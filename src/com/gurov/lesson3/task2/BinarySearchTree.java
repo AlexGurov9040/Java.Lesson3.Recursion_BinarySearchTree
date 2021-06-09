@@ -20,6 +20,7 @@ public class BinarySearchTree {
         tree.Insert(19,"Node_7");
         tree.Insert(33,"Node_8");
         tree.Insert(38,"Node_9");
+        tree.Insert(37,"Новая информация");
         tree.Display();
         CreateNode findValue = tree.Find(21);
         if (findValue != null)
